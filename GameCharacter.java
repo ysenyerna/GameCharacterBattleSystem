@@ -49,22 +49,23 @@ public class GameCharacter {
 			System.out.println(characterName + " has been defeated!");
 		}
 		else {
-			System.out.println(characterName + "'s health is now at " + damageAmount + ".");
+			System.out.println(characterName + "'s health is now at " + health + ".\n");
 		}
 	}
 
 	public void AttackCharacter(GameCharacter character) {
 		// Check character states
-		if (IsCharacterAlive()) {
+		if (!IsCharacterAlive()) {
 			throw new IllegalStateException("Error: This character cannot attack as they are already defeated.");
 		}
-		if (character.IsCharacterAlive()) {
+		if (!character.IsCharacterAlive()) {
 			throw new IllegalStateException("Error: Cannot attack a character who is already defeated.");
 		}
 		// Perform attack
 		System.out.println(characterName + " attacks " + character.GetCharacterName() + ".");
 		character.TakeDamage(attackPower);
 	}
+
 
 	public void DisplayCharacterInformation() {
 		System.out.println("Name: " + characterName +
